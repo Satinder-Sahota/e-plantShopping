@@ -7,23 +7,26 @@ const CartItem = ({ onContinueShopping,sendCartCount }) => {
     
   const cart = useSelector(state => state.cart.items);
   const dispatch = useDispatch();
-let cartCost=0;
+let cartValues={cartCost:0,totalItems:0};
   // Calculate total amount for all products in the cart
   const calculateTotalAmount = () => {
     cart.forEach((item) => {
-        cartCost += parseInt(item.quantity) * parseInt(item.cost.replace('$',''));
-
+       
+        cartValues.cartCost += parseInt(item.quantity) * parseInt(item.cost.replace('$',''));
+       
+        cartValues.totalItems+=parseInt(item.quantity);
   })
-  console.log(cartCost);
-  return cartCost;
+    return cartValues.cartCost;
 };
-
+ const calculateTotalItems =()=>{
+return cartValues.totalItems;
+ };
   const handleContinueShopping = (e) => {
     onContinueShopping(e);
   };
 
 const handleCheckoutShopping = (e) => {
-  alert('Functionality to be added for future reference');
+  alert('Feature coming soon!');
 };
 
   const handleIncrement = (item) => {
@@ -49,6 +52,7 @@ const handleCheckoutShopping = (e) => {
   return (
     <div className="cart-container">
       <h2 style={{ color: 'black' }}>Total Cart Amount: ${calculateTotalAmount()}</h2>
+      <h2 style={{ color: 'black' }}>Total Items: {calculateTotalItems()}</h2>
       <div>
         {cart.map(item => (
           <div className="cart-item" key={item.name}>
