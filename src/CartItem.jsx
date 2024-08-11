@@ -19,7 +19,7 @@ let cartCost=0;
 };
 
   const handleContinueShopping = (e) => {
-    // onContinueShopping();
+    onContinueShopping(e);
   };
 
 const handleCheckoutShopping = (e) => {
@@ -42,9 +42,7 @@ const handleCheckoutShopping = (e) => {
 
   // Calculate total cost based on quantity for an item
   const calculateTotalCost = (item) => {
-    console.log(item.quantity);
-    console.log(item.cost.replace("$",''));
-           console.log(parseInt(item.quantity) * parseInt(item.cost));
+    
                return parseInt(item.quantity) * parseInt(item.cost.replace('$',''));
    };
 

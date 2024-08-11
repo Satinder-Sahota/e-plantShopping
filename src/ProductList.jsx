@@ -248,11 +248,13 @@ const handlePlantsClick = (e) => {
 };
 
    const handleContinueShopping = (e) => {
+    
     e.preventDefault();
+    setShowPlants(true);
     setShowCart(false);
   };
   const getCartCount =(data)=>{
-    console.log("GetCartCount:"+data)
+    
     setCartCount(data-1);
   }
   const handleAddToCart = (product) => {
